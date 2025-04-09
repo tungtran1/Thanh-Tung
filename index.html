@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>THPT MỸ HƯƠNG</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="hinh/thpt.png" alt="Logo Trường">
+            <div class="company-info">
+                <h1>THPT MỸ HƯƠNG</h1>
+            </div>
+        </div>
+
+        <!-- Menu Điều Hướng -->
+        <div class="nav">
+            <ul class="menu">
+                <li><a href="#" onclick="showHome(event)">Trang Chủ |</a></li>
+                <li><a href="#" onclick="loadPage(event, 'gioithieu.html')">Giới Thiệu |</a></li>
+                <li><a href="#" onclick="loadPage(event, 'lichlamviec.html')">Lịch Làm Việc |</a></li>
+                <li><a href="#" onclick="loadPage(event, 'gopy.html')">Góp Ý |</a></li>
+                <li><a href="#" onclick="loadPage(event, 'hoidap.html')">Hỏi & Đáp |</a></li>
+            </ul>
+            <div class="nav-right">
+                <ul class="language">
+                    <li><a href="#" onclick="changeLanguage('en')">English</a></li>
+                    <li><a href="#" onclick="changeLanguage('vi')">Tiếng Việt</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Phần Giới Thiệu (Mặc định) -->
+        <div id="intro">
+            <h2>Chào Mừng Đến Với THPT Mỹ Hương</h2>
+            <p>
+                Trường THPT Mỹ Hương nằm tại xã Mỹ Hương, huyện Mỹ Tú, tỉnh Sóc Trăng, là một trường trung học phổ thông
+                công lập thuộc hệ thống giáo dục quốc dân Việt Nam. Với tầm nhìn trở thành một trong những trường THPT
+                hàng đầu tại địa phương, trường cam kết cung cấp môi trường giáo dục chất lượng cao, phát triển toàn
+                diện học sinh cả về học vấn, kỹ năng và đạo đức, chuẩn bị cho các em hành trang vững chắc để bước vào
+                đại học hoặc tham gia thị trường lao động.
+            </p>
+        </div>
+
+        <!-- Iframe để hiển thị nội dung khi nhấn menu -->
+        <iframe id="contentFrame" src="" width="100%" height="600px" style="border:none; display: none;"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        FPT Polytechnic © 2017. All rights reserved.
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Đặt lại trạng thái khi trang được tải
+        window.onload = function () {
+            document.getElementById("contentFrame").style.display = "none";
+            document.getElementById("intro").style.display = "block";
+        };
+
+        function loadPage(event, page) {
+            event.preventDefault(); // Ngăn chặn tải trang mới
+
+            // Ẩn phần intro và hiển thị iframe
+            document.getElementById("intro").style.display = "none";
+            let iframe = document.getElementById("contentFrame");
+            iframe.style.display = "block";
+            iframe.src = page;
+        }
+
+        function showHome(event) {
+            event.preventDefault(); // Ngăn chặn tải trang mới
+
+            // Ẩn iframe và hiển thị phần intro
+            document.getElementById("contentFrame").style.display = "none";
+            document.getElementById("intro").style.display = "block";
+        }
+
+        function changeLanguage(language) {
+            alert('Language changed to ' + language);
+        }
+    </script>
+</body>
+
+</html>
